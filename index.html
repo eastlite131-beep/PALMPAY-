@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#7138ed">
-<meta name="description" content="An independent purple wallet interface concept.">
-<link rel="manifest" href="manifest.webmanifest">
+<meta name="description" content="Private sample wallet interface">
+<link rel="manifest" href="./manifest.webmanifest">
 <title>My Wallet</title>
 
 <style>
@@ -17,254 +17,219 @@
 }
 
 body {
-  background: #f5f4fa;
   font-family: Arial, sans-serif;
-  color: #24223d;
-  padding-bottom: 90px;
+  background: #f5f4fa;
+  color: #25233d;
+  padding-bottom: 95px;
 }
 
 .header {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 25px 20px 30px;
+  background: white;
 }
 
 .profile {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.profile-name {
   font-size: 19px;
   font-weight: bold;
 }
 
-.avatar {
+.profile-small {
+  color: #77758a;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.profile-icon {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg,#6328d8,#b28aff);
+  background: #7138ed;
   color: white;
   display: grid;
   place-items: center;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .header-icons {
-  display: flex;
-  gap: 17px;
+  color: #7138ed;
   font-size: 23px;
-  color: #292441;
+  letter-spacing: 8px;
 }
 
-.concept-label {
-  text-align: center;
-  color: #8060b6;
-  font-size: 10px;
-  letter-spacing: 1px;
-  padding: 5px;
+.container {
+  padding: 0 17px;
 }
 
 .balance-card {
-  margin: 10px 18px 0;
-  padding: 22px;
-  border-radius: 22px 22px 0 0;
-  background: #eae8ff;
+  background: #eee9ff;
+  border-radius: 24px;
+  padding: 24px 20px;
+  margin-top: 0;
 }
 
-.balance-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 13px;
+.balance-label {
+  color: #66627b;
+  font-size: 15px;
 }
 
-.balance {
-  font-size: 30px;
+.balance-amount {
+  font-size: 34px;
   font-weight: bold;
-  margin-top: 20px;
-  color: #282344;
+  color: #5125a8;
+  margin: 17px 0;
 }
 
-.status-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 17px;
-  font-size: 12px;
+.balance-caption {
+  color: #77758a;
+  font-size: 13px;
 }
 
 .status {
-  background: #ffe2e4;
-  color: #c33f49;
-  padding: 7px 12px;
+  display: inline-block;
+  margin-top: 18px;
+  background: #fff0ef;
+  color: #c03935;
+  padding: 9px 14px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
 }
 
-.earnings {
-  background: white;
-  margin: 0 18px 17px;
-  padding: 17px;
-  border-radius: 0 0 18px 18px;
+.status-date {
+  margin-top: 10px;
   font-size: 13px;
+  color: #77758a;
 }
 
-.section {
-  margin: 0 18px 17px;
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 27px 2px 15px;
 }
 
-.quick-grid {
+.actions {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 9px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
-.tile {
+.action {
   background: white;
-  border-radius: 16px;
-  min-height: 110px;
+  border-radius: 17px;
+  min-height: 105px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 11px;
-  text-align: center;
-  padding: 8px 3px;
+  gap: 12px;
+  color: #7138ed;
+  font-size: 27px;
+}
+
+.action span:last-child {
+  color: #302d45;
   font-size: 12px;
 }
 
-.tile-icon {
-  font-size: 29px;
-  color: #7138ed;
-}
-
-.tile button {
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-}
-
-.tile button:disabled {
-  opacity: 0.65;
+.action.disabled {
+  opacity: 0.48;
   cursor: not-allowed;
 }
 
-.activity {
-  background: white;
-  border-radius: 19px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+.action:disabled {
+  pointer-events: none;
 }
 
-.activity h3 {
+.notice {
+  background: #eee9ff;
+  padding: 19px;
+  border-radius: 18px;
+  margin-top: 23px;
+  color: #57418b;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.notice strong {
+  display: block;
   font-size: 15px;
-  margin-bottom: 9px;
+  margin-bottom: 5px;
 }
 
-.activity p {
-  font-size: 12px;
-  color: #888894;
+.transaction {
+  background: white;
+  border-radius: 18px;
+  padding: 19px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.activity-date {
+.transaction-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.transaction-sub {
+  color: #88869a;
   font-size: 12px;
-  color: #858593;
+  margin-top: 7px;
+}
+
+.transaction-date {
+  font-size: 12px;
+  color: #88869a;
 }
 
 .services {
   background: white;
   border-radius: 20px;
-  padding: 22px 10px;
+  margin-top: 18px;
+  padding: 20px 10px;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  row-gap: 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px 8px;
 }
 
 .service {
   text-align: center;
+  color: #7138ed;
+  font-size: 25px;
+}
+
+.service div:last-child {
+  color: #302d45;
   font-size: 12px;
+  margin-top: 9px;
 }
-
-.service-icon {
-  font-size: 27px;
-  margin-bottom: 9px;
-}
-
-.purple { color: #7138ed; }
-.blue { color: #5098ed; }
-.green { color: #25b59a; }
 
 .promo {
   background: white;
-  padding: 21px;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  margin-top: 18px;
+  padding: 22px 18px;
 }
 
-.promo-circle {
-  background: #5123a4;
-  color: white;
-  width: 55px;
-  height: 55px;
-  min-width: 55px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
+.promo-title {
+  color: #7138ed;
   font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 8px;
 }
 
-.promo h3 {
-  font-size: 14px;
-  margin-bottom: 7px;
-}
-
-.promo p {
-  color: #858590;
-  font-size: 12px;
+.promo-text {
+  color: #77758a;
+  font-size: 13px;
   line-height: 1.5;
-}
-
-.info {
-  background: white;
-  padding: 20px;
-  border-radius: 19px;
-}
-
-.info h3 {
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-.info-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0eef5;
-  font-size: 12px;
-}
-
-.info-row span:first-child {
-  color: #888;
-}
-
-.info-row span:last-child {
-  font-weight: bold;
-  text-align: right;
-}
-
-.footer {
-  text-align: center;
-  color: #9993a5;
-  font-size: 10px;
-  padding: 15px;
 }
 
 .bottom-nav {
@@ -276,219 +241,218 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 13px 5px 17px;
-  box-shadow: 0 -3px 15px #0000000b;
+  box-shadow: 0 -3px 15px rgba(0,0,0,0.05);
 }
 
 .nav-item {
   text-align: center;
+  color: #77758a;
   font-size: 11px;
-  color: #36334d;
 }
 
-.nav-item span {
-  display: block;
+.nav-item.active {
+  color: #7138ed;
+}
+
+.nav-icon {
   font-size: 23px;
   margin-bottom: 6px;
 }
 
-.active {
-  color: #7138ed;
+button {
+  font-family: inherit;
+}
+
+@media (max-width: 360px) {
+  .balance-amount {
+    font-size: 29px;
+  }
+  .actions {
+    gap: 6px;
+  }
+  .action span:last-child,
+  .service div:last-child {
+    font-size: 11px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="concept-label">
-INDEPENDENT WALLET CONCEPT
-</div>
-
-<div class="header">
+<header class="header">
   <div class="profile">
-    <div class="avatar">EY</div>
-    <span>Hi, EZEKIEL</span>
-  </div>
-
-  <div class="header-icons">
-    <span>♧</span>
-    <span>♢</span>
-    <span>♧</span>
-  </div>
-</div>
-
-<div class="balance-card">
-
-  <div class="balance-top">
-    <span>🟢 Available Balance</span>
-    <span>Wallet Overview</span>
-  </div>
-
-  <div class="balance">₦242,046.00</div>
-
-  <div class="status-row">
-    <span>Account Status</span>
-    <span class="status">RESTRICTED</span>
-  </div>
-
-</div>
-
-<div class="earnings">
-  💜 Wallet Information
-  <span class="green"> · Account Overview</span>
-</div>
-
-<div class="section">
-  <div class="quick-grid">
-
-    <div class="tile">
-      <div class="tile-icon">🏦</div>
-      <button disabled>Transfer</button>
-    </div>
-
-    <div class="tile">
-      <div class="tile-icon">👤</div>
-      <button disabled>Receive</button>
-    </div>
-
-    <div class="tile">
-      <div class="tile-icon">🐷</div>
-      <span>Savings</span>
-    </div>
-
-    <div class="tile">
-      <div class="tile-icon">💼</div>
-      <span>Wallet</span>
-    </div>
-
-  </div>
-</div>
-
-<div class="section">
-  <div class="activity">
     <div>
-      <h3>Wallet Activity</h3>
-      <p>No activity available</p>
+      <div class="profile-name">Hi, EZEKIEL</div>
+      <div class="profile-small">Welcome to your wallet</div>
     </div>
-    <div class="activity-date">History</div>
+    <div class="header-icons">♡ ◈</div>
+    <div class="profile-icon">E</div>
   </div>
-</div>
 
-<div class="section">
+  <div class="balance-card">
+    <div class="balance-label">Available Balance</div>
+    <div class="balance-amount">₦242,046.00</div>
+    <div class="balance-caption">Displayed sample account balance</div>
+
+    <div class="status">● RESTRICTED</div>
+    <div class="status-date">
+      Restriction date: 14 November 2026
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="section-title">Wallet Actions</div>
+
+  <div class="actions">
+    <button class="action disabled" disabled>
+      <span>↗</span>
+      <span>Transfer</span>
+    </button>
+
+    <button class="action disabled" disabled>
+      <span>↓</span>
+      <span>Receive</span>
+    </button>
+
+    <div class="action">
+      <span>▣</span>
+      <span>History</span>
+    </div>
+
+    <div class="action">
+      <span>♙</span>
+      <span>Profile</span>
+    </div>
+  </div>
+
+  <div class="section-title">Account Information</div>
+
+  <div class="transaction">
+    <div>
+      <div class="transaction-title">Account Name</div>
+      <div class="transaction-sub">Ezekiel Yahaya</div>
+    </div>
+    <div>👤</div>
+  </div>
+
+  <div class="transaction">
+    <div>
+      <div class="transaction-title">Account Status</div>
+      <div class="transaction-sub">Restricted</div>
+    </div>
+    <div style="color:#c03935">●</div>
+  </div>
+
+  <div class="transaction">
+    <div>
+      <div class="transaction-title">Restriction Date</div>
+      <div class="transaction-sub">14 November 2026</div>
+    </div>
+    <div>▣</div>
+  </div>
+
+  <div class="section-title">Explore Services</div>
+
   <div class="services">
-
     <div class="service">
-      <div class="service-icon blue">☎</div>
-      Airtime
+      <div>▣</div>
+      <div>Airtime</div>
     </div>
 
     <div class="service">
-      <div class="service-icon green">⇅</div>
-      Data
+      <div>⇅</div>
+      <div>Data</div>
     </div>
 
     <div class="service">
-      <div class="service-icon purple">⚽</div>
-      Sports
+      <div>◈</div>
+      <div>Savings</div>
     </div>
 
     <div class="service">
-      <div class="service-icon green">ϟ</div>
-      Electricity
+      <div>♙</div>
+      <div>Support</div>
     </div>
 
     <div class="service">
-      <div class="service-icon purple">🎁</div>
-      Rewards
+      <div>▤</div>
+      <div>Cards</div>
     </div>
 
     <div class="service">
-      <div class="service-icon blue">🛡</div>
-      Security
+      <div>◇</div>
+      <div>Rewards</div>
     </div>
 
     <div class="service">
-      <div class="service-icon purple">💳</div>
-      Cards
+      <div>▦</div>
+      <div>More</div>
     </div>
 
     <div class="service">
-      <div class="service-icon purple">▦</div>
-      More
+      <div>☰</div>
+      <div>Settings</div>
     </div>
-
   </div>
-</div>
 
-<div class="section">
   <div class="promo">
-    <div class="promo-circle">EY</div>
-    <div>
-      <h3>Welcome to Your Wallet</h3>
-      <p>Your personal wallet interface</p>
+    <div class="promo-title">Your Wallet</div>
+    <div class="promo-text">
+      A clean, simple and organised personal
+      wallet interface.
     </div>
   </div>
-</div>
 
-<div class="section">
-  <div class="info">
-
-    <h3>Account Information</h3>
-
-    <div class="info-row">
-      <span>Account Name</span>
-      <span>Ezekiel Yahaya</span>
-    </div>
-
-    <div class="info-row">
-      <span>Displayed Balance</span>
-      <span>₦242,046.00</span>
-    </div>
-
-    <div class="info-row">
-      <span>Account Status</span>
-      <span style="color:#c33f49">Restricted</span>
-    </div>
-
-    <div class="info-row">
-      <span>Restriction Date</span>
-      <span>14 November 2026</span>
-    </div>
-
+  <div class="notice">
+    <strong>PRIVATE SAMPLE INTERFACE</strong>
+    This is an independent sample wallet interface.
+    It is not connected to any financial institution.
+    No real transfers, payments or withdrawals
+    can be performed.
   </div>
-</div>
 
-<div class="footer">
-  Independent interface concept · Not affiliated with a financial institution
-</div>
+</main>
 
-<div class="bottom-nav">
-
+<nav class="bottom-nav">
   <div class="nav-item active">
-    <span>⌂</span>
+    <div class="nav-icon">⌂</div>
     Home
   </div>
 
   <div class="nav-item">
-    <span>▣</span>
+    <div class="nav-icon">♙</div>
     Wallet
   </div>
 
   <div class="nav-item">
-    <span>▥</span>
-    Wealth
+    <div class="nav-icon">▤</div>
+    History
   </div>
 
   <div class="nav-item">
-    <span>♧</span>
+    <div class="nav-icon">♡</div>
     Rewards
   </div>
 
   <div class="nav-item">
-    <span>☺</span>
-    Profile
+    <div class="nav-icon">☻</div>
+    Me
   </div>
+</nav>
 
-</div>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => {
+        console.log("Service worker registration failed:", error);
+      });
+  });
+}
+</script>
 
 </body>
 </html>
