@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7138ed">
+<meta name="description" content="An independent purple wallet interface concept.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>My Wallet</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f4fa;
+  font-family: Arial, sans-serif;
+  color: #24223d;
+  padding-bottom: 90px;
+}
+
+.header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#6328d8,#b28aff);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 17px;
+  font-size: 23px;
+  color: #292441;
+}
+
+.concept-label {
+  text-align: center;
+  color: #8060b6;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 5px;
+}
+
+.balance-card {
+  margin: 10px 18px 0;
+  padding: 22px;
+  border-radius: 22px 22px 0 0;
+  background: #eae8ff;
+}
+
+.balance-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.balance {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #282344;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 17px;
+  font-size: 12px;
+}
+
+.status {
+  background: #ffe2e4;
+  color: #c33f49;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.earnings {
+  background: white;
+  margin: 0 18px 17px;
+  padding: 17px;
+  border-radius: 0 0 18px 18px;
+  font-size: 13px;
+}
+
+.section {
+  margin: 0 18px 17px;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+}
+
+.tile {
+  background: white;
+  border-radius: 16px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  text-align: center;
+  padding: 8px 3px;
+  font-size: 12px;
+}
+
+.tile-icon {
+  font-size: 29px;
+  color: #7138ed;
+}
+
+.tile button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.tile button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.activity {
+  background: white;
+  border-radius: 19px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.activity h3 {
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+
+.activity p {
+  font-size: 12px;
+  color: #888894;
+}
+
+.activity-date {
+  font-size: 12px;
+  color: #858593;
+}
+
+.services {
+  background: white;
+  border-radius: 20px;
+  padding: 22px 10px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  row-gap: 26px;
+}
+
+.service {
+  text-align: center;
+  font-size: 12px;
+}
+
+.service-icon {
+  font-size: 27px;
+  margin-bottom: 9px;
+}
+
+.purple { color: #7138ed; }
+.blue { color: #5098ed; }
+.green { color: #25b59a; }
+
+.promo {
+  background: white;
+  padding: 21px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.promo-circle {
+  background: #5123a4;
+  color: white;
+  width: 55px;
+  height: 55px;
+  min-width: 55px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+.promo h3 {
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.promo p {
+  color: #858590;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.info {
+  background: white;
+  padding: 20px;
+  border-radius: 19px;
+}
+
+.info h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0eef5;
+  font-size: 12px;
+}
+
+.info-row span:first-child {
+  color: #888;
+}
+
+.info-row span:last-child {
+  font-weight: bold;
+  text-align: right;
+}
+
+.footer {
+  text-align: center;
+  color: #9993a5;
+  font-size: 10px;
+  padding: 15px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 5px 17px;
+  box-shadow: 0 -3px 15px #0000000b;
+}
+
+.nav-item {
+  text-align: center;
+  font-size: 11px;
+  color: #36334d;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 23px;
+  margin-bottom: 6px;
+}
+
+.active {
+  color: #7138ed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="concept-label">
+INDEPENDENT WALLET CONCEPT
+</div>
+
+<div class="header">
+  <div class="profile">
+    <div class="avatar">EY</div>
+    <span>Hi, EZEKIEL</span>
+  </div>
+
+  <div class="header-icons">
+    <span>♧</span>
+    <span>♢</span>
+    <span>♧</span>
+  </div>
+</div>
+
+<div class="balance-card">
+
+  <div class="balance-top">
+    <span>🟢 Available Balance</span>
+    <span>Wallet Overview</span>
+  </div>
+
+  <div class="balance">₦242,046.00</div>
+
+  <div class="status-row">
+    <span>Account Status</span>
+    <span class="status">RESTRICTED</span>
+  </div>
+
+</div>
+
+<div class="earnings">
+  💜 Wallet Information
+  <span class="green"> · Account Overview</span>
+</div>
+
+<div class="section">
+  <div class="quick-grid">
+
+    <div class="tile">
+      <div class="tile-icon">🏦</div>
+      <button disabled>Transfer</button>
+    </div>
+
+    <div class="tile">
+      <div class="tile-icon">👤</div>
+      <button disabled>Receive</button>
+    </div>
+
+    <div class="tile">
+      <div class="tile-icon">🐷</div>
+      <span>Savings</span>
+    </div>
+
+    <div class="tile">
+      <div class="tile-icon">💼</div>
+      <span>Wallet</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="activity">
+    <div>
+      <h3>Wallet Activity</h3>
+      <p>No activity available</p>
+    </div>
+    <div class="activity-date">History</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="services">
+
+    <div class="service">
+      <div class="service-icon blue">☎</div>
+      Airtime
+    </div>
+
+    <div class="service">
+      <div class="service-icon green">⇅</div>
+      Data
+    </div>
+
+    <div class="service">
+      <div class="service-icon purple">⚽</div>
+      Sports
+    </div>
+
+    <div class="service">
+      <div class="service-icon green">ϟ</div>
+      Electricity
+    </div>
+
+    <div class="service">
+      <div class="service-icon purple">🎁</div>
+      Rewards
+    </div>
+
+    <div class="service">
+      <div class="service-icon blue">🛡</div>
+      Security
+    </div>
+
+    <div class="service">
+      <div class="service-icon purple">💳</div>
+      Cards
+    </div>
+
+    <div class="service">
+      <div class="service-icon purple">▦</div>
+      More
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="promo">
+    <div class="promo-circle">EY</div>
+    <div>
+      <h3>Welcome to Your Wallet</h3>
+      <p>Your personal wallet interface</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="info">
+
+    <h3>Account Information</h3>
+
+    <div class="info-row">
+      <span>Account Name</span>
+      <span>Ezekiel Yahaya</span>
+    </div>
+
+    <div class="info-row">
+      <span>Displayed Balance</span>
+      <span>₦242,046.00</span>
+    </div>
+
+    <div class="info-row">
+      <span>Account Status</span>
+      <span style="color:#c33f49">Restricted</span>
+    </div>
+
+    <div class="info-row">
+      <span>Restriction Date</span>
+      <span>14 November 2026</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Independent interface concept · Not affiliated with a financial institution
+</div>
+
+<div class="bottom-nav">
+
+  <div class="nav-item active">
+    <span>⌂</span>
+    Home
+  </div>
+
+  <div class="nav-item">
+    <span>▣</span>
+    Wallet
+  </div>
+
+  <div class="nav-item">
+    <span>▥</span>
+    Wealth
+  </div>
+
+  <div class="nav-item">
+    <span>♧</span>
+    Rewards
+  </div>
+
+  <div class="nav-item">
+    <span>☺</span>
+    Profile
+  </div>
+
+</div>
+
+</body>
+</html>
