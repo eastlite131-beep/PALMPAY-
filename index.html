@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#7138ed">
-<meta name="description" content="Private sample wallet interface">
+<meta name="description" content="Independent wallet interface concept">
 <link rel="manifest" href="./manifest.webmanifest">
 <title>My Wallet</title>
 
@@ -72,7 +72,6 @@ body {
   background: #eee9ff;
   border-radius: 24px;
   padding: 24px 20px;
-  margin-top: 0;
 }
 
 .balance-label {
@@ -104,9 +103,34 @@ body {
 }
 
 .status-date {
+  display: block;
   margin-top: 10px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
   font-size: 13px;
-  color: #77758a;
+  color: #7138ed;
+  text-decoration: underline;
+  text-align: left;
+  cursor: pointer;
+}
+
+.restriction-details {
+  background: white;
+  border-radius: 16px;
+  padding: 17px;
+  margin-top: 15px;
+  color: #302d45;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.restriction-details strong {
+  display: block;
+  color: #5125a8;
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 
 .section-title {
@@ -123,6 +147,7 @@ body {
 
 .action {
   background: white;
+  border: none;
   border-radius: 17px;
   min-height: 105px;
   display: flex;
@@ -144,26 +169,6 @@ body {
   cursor: not-allowed;
 }
 
-.action:disabled {
-  pointer-events: none;
-}
-
-.notice {
-  background: #eee9ff;
-  padding: 19px;
-  border-radius: 18px;
-  margin-top: 23px;
-  color: #57418b;
-  line-height: 1.6;
-  font-size: 13px;
-}
-
-.notice strong {
-  display: block;
-  font-size: 15px;
-  margin-bottom: 5px;
-}
-
 .transaction {
   background: white;
   border-radius: 18px;
@@ -183,11 +188,6 @@ body {
   color: #88869a;
   font-size: 12px;
   margin-top: 7px;
-}
-
-.transaction-date {
-  font-size: 12px;
-  color: #88869a;
 }
 
 .services {
@@ -232,6 +232,22 @@ body {
   line-height: 1.5;
 }
 
+.notice {
+  background: #eee9ff;
+  padding: 19px;
+  border-radius: 18px;
+  margin-top: 23px;
+  color: #57418b;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.notice strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -259,17 +275,15 @@ body {
   margin-bottom: 6px;
 }
 
-button {
-  font-family: inherit;
-}
-
 @media (max-width: 360px) {
   .balance-amount {
     font-size: 29px;
   }
+
   .actions {
     gap: 6px;
   }
+
   .action span:last-child,
   .service div:last-child {
     font-size: 11px;
@@ -286,6 +300,7 @@ button {
       <div class="profile-name">Hi, EZEKIEL</div>
       <div class="profile-small">Welcome to your wallet</div>
     </div>
+
     <div class="header-icons">♡ ◈</div>
     <div class="profile-icon">E</div>
   </div>
@@ -296,8 +311,23 @@ button {
     <div class="balance-caption">Available balance</div>
 
     <div class="status">● RESTRICTED</div>
-    <div class="status-date">
+
+    <button
+      class="status-date"
+      id="restrictionDateButton"
+      aria-expanded="false"
+      aria-controls="restrictionDetails">
       Restriction date: 14 November 2026
+    </button>
+
+    <div
+      class="restriction-details"
+      id="restrictionDetails"
+      hidden>
+      <strong>Restriction Details</strong>
+      <p>Date: 14 November 2026</p>
+      <p>Time: 11:36</p>
+      <p>Reason: Unknown</p>
     </div>
   </div>
 </header>
@@ -357,45 +387,14 @@ button {
   <div class="section-title">Explore Services</div>
 
   <div class="services">
-    <div class="service">
-      <div>▣</div>
-      <div>Airtime</div>
-    </div>
-
-    <div class="service">
-      <div>⇅</div>
-      <div>Data</div>
-    </div>
-
-    <div class="service">
-      <div>◈</div>
-      <div>Savings</div>
-    </div>
-
-    <div class="service">
-      <div>♙</div>
-      <div>Support</div>
-    </div>
-
-    <div class="service">
-      <div>▤</div>
-      <div>Cards</div>
-    </div>
-
-    <div class="service">
-      <div>◇</div>
-      <div>Rewards</div>
-    </div>
-
-    <div class="service">
-      <div>▦</div>
-      <div>More</div>
-    </div>
-
-    <div class="service">
-      <div>☰</div>
-      <div>Settings</div>
-    </div>
+    <div class="service"><div>▣</div><div>Airtime</div></div>
+    <div class="service"><div>⇅</div><div>Data</div></div>
+    <div class="service"><div>◈</div><div>Savings</div></div>
+    <div class="service"><div>♙</div><div>Support</div></div>
+    <div class="service"><div>▤</div><div>Cards</div></div>
+    <div class="service"><div>◇</div><div>Rewards</div></div>
+    <div class="service"><div>▦</div><div>More</div></div>
+    <div class="service"><div>☰</div><div>Settings</div></div>
   </div>
 
   <div class="promo">
@@ -407,9 +406,9 @@ button {
   </div>
 
   <div class="notice">
-    <strong>PRIVATE SAMPLE INTERFACE</strong>
-    This is an independent sample wallet interface.
-    It is not connected to any financial institution.
+    <strong>Independent Wallet Interface</strong>
+    This is an independent interface concept and
+    is not connected to any financial institution.
     No real transfers, payments or withdrawals
     can be performed.
   </div>
@@ -444,6 +443,23 @@ button {
 </nav>
 
 <script>
+const restrictionButton =
+  document.getElementById("restrictionDateButton");
+
+const restrictionDetails =
+  document.getElementById("restrictionDetails");
+
+restrictionButton.addEventListener("click", () => {
+  const isOpening = restrictionDetails.hidden;
+
+  restrictionDetails.hidden = !isOpening;
+
+  restrictionButton.setAttribute(
+    "aria-expanded",
+    String(isOpening)
+  );
+});
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js")
